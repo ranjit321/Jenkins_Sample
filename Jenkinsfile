@@ -15,6 +15,7 @@ pipeline{
       steps{
         echo 'building the applications...'
         echo "The build has been initiated by: ${AUTHOR}"
+        echo "This is a ${stringPara} pipeline.."
       }
     }
     stage ("test")
