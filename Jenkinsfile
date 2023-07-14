@@ -7,7 +7,7 @@ pipeline{
   parameters{
     string (name:'stringPara',defaultValue:'',description:'version parameter')
     choice(name:'VERSION',choices:['1.1.0','1.5.0'],description:'')
-    boolenaParam(name:'executeTests',defaultValue:true,description:'')
+    boolenParam(name:'executeTests',defaultValue:true,description:'')
   }
   
   stages {
