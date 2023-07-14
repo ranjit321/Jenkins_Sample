@@ -1,8 +1,9 @@
+def gv //global variable
 pipeline{
   agent any
   environment {
     AUTHOR='Ranjit Kumar Mahto'
-    CRED=credentials('testCred')
+    CRED=credentials('3429674b-9f3a-4142-9171-3893ee26f2d0')
   }
   parameters{
     string (name:'stringPara',defaultValue:'',description:'version parameter')
@@ -11,11 +12,19 @@ pipeline{
   }
   
   stages {
+    stage("init"){
+     steps{
+        script{
+            gv=load "script.groovy"
+        }
+     }
+    }
     stage("build"){
       steps{
-        echo 'building the applications...'
-        echo "The build has been initiated by: ${AUTHOR}"
-        echo "This is a ${stringPara} pipeline.."
+        script{
+         gv.buildApp()
+        }
+       
       }
     }
     stage ("test")
@@ -26,7 +35,9 @@ pipeline{
         }
       }
       steps{
-        echo "testing the application with version: ${params.VERSION}"
+       script{
+        gv.testApp()
+       }
       }
     }
     stage ("deploy")
