@@ -3,7 +3,7 @@ pipeline{
   agent any
   environment {
     AUTHOR='Ranjit Kumar Mahto'
-    CRED=credentials('3429674b-9f3a-4142-9171-3893ee26f2d0')
+    CRED=credentials('')
   }
   parameters{
     string (name:'stringPara',defaultValue:'',description:'version parameter')
